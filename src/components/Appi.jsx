@@ -43,12 +43,12 @@ export const Appi = () => {
 
     function getMovies() {
         axios.get("https://api.themoviedb.org/3/movie/now_playing?api_key=191528030c357419329af1198edbcb24&language=es-MX&page=1")
-        .then((response) => {
-            setData(response.data.results)
-        })
-        .catch((error) => {
-            console.log(error)
-        });
+            .then((response) => {
+                setData(response.data.results)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
 
@@ -59,17 +59,20 @@ export const Appi = () => {
             <Link to='/imgmemes'><button className='btn btn-dark m-2'>Memes</button></Link>
             <Link to='/counter'><button className='btn btn-dark m-2'>Counter</button></Link>
 
-            {data.map((movie) => (
-                <div key={movie.id} className='mb-5'>
-                    <h2>{movie.title}</h2>
-                    <p>{movie.overview}</p>
-                    <img
-                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        alt={movie.title}
-                        style={{height: 200}}
-                    />
-                </div>
-            ))}
+            <div className='d-flex flex-wrap gap-3 ms-2'>
+                {data.map((movie) => (
+
+                    <div className="card" style={{width: 300}}>
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} 
+                            className="card-img-top" alt={movie.title} />
+                        <div className="card-body">
+                            <h5 className="card-title">{movie.title}</h5>
+                            <p className="card-text">{movie.overview}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
