@@ -1,34 +1,24 @@
-// import logo from './logo.svg';
-import './App.css';
-// import ImgMemes from './components/ImgMemes';
+import React from 'react'
+import Home from './components/Home';
+import User from './components/User';
+import ImgMemes from './components/ImgMemes';
 import Counter from './components/Counter';
+import { Appi } from './components/Appi';
+import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
 
-      {/* <ImgMemes /> */}
-
-
-      <div className='d-flex justify-content-center mt-5'>
-        <Counter />
-      </div>
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/user' element={<User />}></Route>
+        <Route path='/imgmemes' element={<ImgMemes />}></Route>
+        <Route path='/counter' element={<Counter />}></Route>
+        <Route path='/appi' element={<Appi />}></Route>
+      </Routes>
+      
     </div>
   );
 }
